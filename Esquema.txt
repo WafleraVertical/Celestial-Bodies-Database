@@ -1,0 +1,84 @@
+Esquema de la Base de Datos
+galaxy
+
+galaxy_id (PK)
+
+name (UNIQUE)
+
+description
+
+number_of_stars (INT)
+
+has_supermassive_black_hole
+
+is_barred
+
+star
+
+star_id (PK)
+
+name (UNIQUE)
+
+description
+
+luminosity
+
+galaxy_id (FK) -> galaxy(galaxy_id)
+
+is_binary_system
+
+is_variable_star
+
+temperature (INT)
+
+planet
+
+planet_id (PK)
+
+name (UNIQUE)
+
+description
+
+orbital_period
+
+star_id (FK) -> star(star_id)
+
+has_life
+
+is_terrestrial
+
+moon
+
+moon_id (PK)
+
+name (UNIQUE)
+
+description
+
+diameter
+
+planet_id (FK) -> planet(planet_id)
+
+has_water_ice
+
+is_geologically_active
+
+orbit_duration (INT)
+
+comet
+
+comet_id (PK)
+
+name (UNIQUE)
+
+description
+
+tail_length
+
+orbital_period (INT)
+
+star_id (FK) -> star(star_id)
+
+is_active
+
+has_passed_near_earth
