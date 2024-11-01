@@ -1,0 +1,53 @@
+CREATE TABLE galaxy ( 
+galaxy_id SERIAL PRIMARY KEY, 
+name VARCHAR(255) NOT NULL UNIQUE, 
+description TEXT, 
+number_of_stars INT, 
+has_supermassive_black_hole BOOLEAN, 
+is_barred BOOLEAN);
+
+CREATE TABLE star ( 
+star_id SERIAL PRIMARY KEY, 
+name VARCHAR(255) NOT NULL UNIQUE, 
+description TEXT, 
+luminosity DECIMAL(10, 2), 
+galaxy_id INT, 
+FOREIGN KEY (galaxy_id) REFERENCES galaxy(galaxy_id), 
+is_binary_system BOOLEAN, 
+is_variable_star BOOLEAN, 
+temperature INT );
+
+CREATE TABLE planet ( 
+planet_id SERIAL PRIMARY KEY, 
+name VARCHAR(255) NOT NULL UNIQUE, 
+description TEXT, 
+orbital_period DECIMAL(10, 2), 
+star_id INT, 
+FOREIGN KEY (star_id) REFERENCES star(star_id), 
+has_life BOOLEAN, 
+is_terrestrial BOOLEAN );
+
+CREATE TABLE moon ( 
+moon_id SERIAL PRIMARY KEY, 
+name VARCHAR(255) NOT NULL UNIQUE, 
+description TEXT, 
+diameter DECIMAL(10, 2), 
+planet_id INT, 
+FOREIGN KEY (planet_id) REFERENCES planet(planet_id), 
+has_water_ice BOOLEAN, 
+is_geologically_active BOOLEAN, 
+orbit_duration INT );
+
+CREATE TABLE comet ( 
+comet_id SERIAL PRIMARY KEY, 
+name VARCHAR(255) NOT NULL UNIQUE, 
+tail_length DECIMAL(10, 2), 
+orbital_period INT, 
+star_id INT, 
+FOREIGN KEY (star_id) REFERENCES star(star_id), 
+is_active BOOLEAN, 
+has_passed_near_earth BOOLEAN, 
+discovery_year INT,
+description TEXT );
+
+
